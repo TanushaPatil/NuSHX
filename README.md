@@ -116,3 +116,11 @@ TF-IDF
 Cosine Similarity
 AI
 Groq API
+<img width="960" height="564" alt="Screenshot 2026-08-26 173411" src="https://github.com/user-attachments/assets/4c0efd54-a3c5-4bd1-b57b-e2dc99f976ce" />
+<img width="960" height="564" alt="Screenshot 2026-08-26 173355" src="https://github.com/user-attachments/assets/4d89482d-b591-46c4-b294-31d71e292689" />
+<img width="960" height="564" alt="Screenshot 2026-08-26 173341" src="https://github.com/user-attachments/assets/594a588a-1eec-49c7-8eb8-5904a8681e1d" />
+<img width="960" height="564" alt="Screenshot 2026-08-26 173200" src="https://github.com/user-attachments/assets/6f37a36f-1c0a-4a13-a6fe-dc6f0b3332d1" />
+<img width="960" height="564" alt="Screenshot 2026-08-26 173103" src="https://github.com/user-attachments/assets/864d9399-a2e0-4287-b529-99b8d9d18aa3" />
+<img width="960" height="564" alt="Screenshot 2026-08-26 173044" src="https://github.com/user-attachments/assets/3ba95877-7cb4-4d86-a186-b7fc1371d458" />
+
+
