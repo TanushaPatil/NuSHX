@@ -4,3 +4,4 @@ numpy==2.5.1
 scikit-learn==1.9.0
 groq==1.6.0
 httpx
+gunicorn
