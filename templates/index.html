@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="NUSHX — AI PDF Assistant using Retrieval-Augmented Generation"
+    >
+
+    <meta
+        name="theme-color"
+        content="#07070b"
+    >
+
+    <title>
+        NUSHX — AI PDF Assistant
+    </title>
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div class="bg-grid"></div>
+
+    <div class="glow glow-purple"></div>
+
+    <div class="glow glow-pink"></div>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header class="navbar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+
+            <div>
+
+                <div class="brand-name">
+                    NUSHX
+                </div>
+
+                <div class="brand-tagline">
+                    AI PDF Intelligence
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="nav-status">
+
+            <span class="status-dot"></span>
+
+            SYSTEM ONLINE
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-badge">
+
+                <span>
+                    ✦
+                </span>
+
+                RETRIEVAL-AUGMENTED INTELLIGENCE
+
+            </div>
+
+
+            <h1>
+
+                Talk to your
+                <span class="gradient-text">
+                    documents.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Upload a PDF, ask a question, and let NUSHX
+                retrieve the most relevant information before
+                generating a grounded AI answer.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             WORKSPACE
+        ================================================== -->
+
+        <section class="workspace">
+
+
+            <!-- =================================================
+                 LEFT CARD — DOCUMENT
+            ================================================== -->
+
+            <div class="card document-card">
+
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            DOCUMENT
+                        </div>
+
+                        <h2>
+                            Upload PDF
+                        </h2>
+
+                    </div>
+
+
+                    <div class="card-icon">
+
+                        <i class="fa-regular fa-file-pdf"></i>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     UPLOAD AREA
+                ============================================== -->
+
+                <input
+                    type="file"
+                    id="pdfFile"
+                    accept=".pdf,application/pdf"
+                    hidden
+                >
+
+
+                <label
+                    for="pdfFile"
+                    class="upload-area"
+                    id="uploadArea"
+                >
+
+                    <div class="upload-symbol">
+
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Drop your PDF here
+                    </h3>
+
+
+                    <p>
+                        or click to browse files
+                    </p>
+
+
+                    <div class="file-rule">
+                        PDF • MAX 25 MB
+                    </div>
+
+                </label>
+
+
+
+                <!-- =============================================
+                     SELECTED FILE
+                ============================================== -->
+
+                <div
+                    class="selected-file"
+                    id="selectedFile"
+                >
+
+                    <div class="file-icon">
+
+                        <i class="fa-solid fa-file-pdf"></i>
+
+                    </div>
+
+
+                    <div class="file-details">
+
+                        <strong id="fileName">
+                            document.pdf
+                        </strong>
+
+                        <span id="fileSize">
+                            0 KB
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="remove-file"
+                        id="removeFile"
+                        aria-label="Remove file"
+                    >
+
+                        ×
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     UPLOAD STATUS
+                ============================================== -->
+
+                <div
+                    class="document-status"
+                    id="uploadStatus"
+                >
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    No document loaded.
+
+                </div>
+
+
+
+                <!-- =============================================
+                     UPLOAD BUTTON
+                ============================================== -->
+
+                <button
+                    type="button"
+                    id="uploadBtn"
+                    class="primary-action"
+                >
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    Process PDF
+
+                </button>
+
+
+
+                <!-- =============================================
+                     DOCUMENT STATS
+                ============================================== -->
+
+                <div class="document-stats">
+
+
+                    <div class="stat-box">
+
+                        <span>
+                            PAGES
+                        </span>
+
+                        <strong id="pageCount">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-box">
+
+                        <span>
+                            CHUNKS
+                        </span>
+
+                        <strong id="chunkCount">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-box">
+
+                        <span>
+                            STATUS
+                        </span>
+
+                        <strong>
+                            READY
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CENTER CARD — CHAT
+            ================================================== -->
+
+            <div class="card chat-card">
+
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            CONVERSATION
+                        </div>
+
+                        <h2>
+                            Ask NUSHX
+                        </h2>
+
+                    </div>
+
+
+                    <div class="ai-badge">
+
+                        <span class="status-dot"></span>
+
+                        AI READY
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     INSTRUCTIONS
+                ============================================== -->
+
+                <div class="instructions">
+
+                    <div class="instruction-icon">
+
+                        <i class="fa-solid fa-lightbulb"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            How to use NUSHX
+                        </strong>
+
+
+                        <p>
+
+                            1. Upload your PDF.<br>
+
+                            2. Click <b>Process PDF</b>.<br>
+
+                            3. Enter your Groq API key below.<br>
+
+                            4. Ask questions about your document.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     CHAT
+                ============================================== -->
+
+                <div
+                    class="chat-area"
+                    id="chatBox"
+                >
+
+                    <div class="empty-chat">
+
+                        <div class="empty-icon">
+
+                            <i class="fa-solid fa-comments"></i>
+
+                        </div>
+
+
+                        <h3>
+                            Upload a document
+                        </h3>
+
+
+                        <p>
+
+                            Your conversation with NUSHX
+                            will appear here.
+
+                        </p>
+
+
+                        <!-- =====================================
+                             SUGGESTIONS
+                        ====================================== -->
+
+                        <div class="suggestions">
+
+
+                            <button
+                                type="button"
+                                class="suggestion"
+                                data-question="What is this document about?"
+                            >
+
+                                What is this document about?
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="suggestion"
+                                data-question="Summarize the main points."
+                            >
+
+                                Summarize the main points.
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="suggestion"
+                                data-question="What are the most important concepts?"
+                            >
+
+                                Important concepts?
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     GROQ API KEY
+                ============================================== -->
+
+                <div class="api-section">
+
+
+                    <div class="api-heading">
+
+                        <div>
+
+                            <div class="eyebrow">
+                                AI CONNECTION
+                            </div>
+
+                            <strong>
+                                Groq API Key
+                            </strong>
+
+                        </div>
+
+
+                        <span
+                            class="api-status"
+                            id="apiStatus"
+                        >
+                            API key required
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="api-input-wrapper">
+
+                        <i class="fa-solid fa-key"></i>
+
+
+                        <input
+                            type="password"
+                            id="apiKey"
+                            placeholder="Enter your Groq API key (gsk_...)"
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <p class="api-note">
+
+                        Your API key is entered for this session
+                        and is sent only when requesting an AI answer.
+                        NUSHX does not display it in the chat.
+
+                    </p>
+
+
+
+                    <!-- =========================================
+                         API INSTRUCTIONS
+                    ========================================== -->
+
+                    <details class="api-help">
+
+                        <summary>
+
+                            <i class="fa-solid fa-circle-question"></i>
+
+                            How do I get a Groq API key?
+
+                        </summary>
+
+
+                        <div class="api-help-content">
+
+                            <p>
+                                Follow these steps:
+                            </p>
+
+
+                            <ol>
+
+                                <li>
+                                    Open the Groq Console.
+                                </li>
+
+                                <li>
+                                    Sign in or create an account.
+                                </li>
+
+                                <li>
+                                    Open the API Keys section.
+                                </li>
+
+                                <li>
+                                    Create a new API key.
+                                </li>
+
+                                <li>
+                                    Copy the key beginning with
+                                    <code>gsk_</code>.
+                                </li>
+
+                                <li>
+                                    Paste it into the box above.
+                                </li>
+
+                            </ol>
+
+
+                            <a
+                                href="https://console.groq.com/keys"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="api-link"
+                            >
+
+                                Open Groq Console
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                            </a>
+
+
+                            <div class="api-warning">
+
+                                <i class="fa-solid fa-shield-halved"></i>
+
+                               
+                            </div>
+
+                        </div>
+
+                    </details>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     QUESTION
+                ============================================== -->
+
+                <div class="question-section">
+
+
+                    <div class="question-label">
+
+                        <span>
+                            YOUR QUESTION
+                        </span>
+
+                        <span>
+                            CTRL + ENTER TO ASK
+                        </span>
+
+                    </div>
+
+
+                    <div class="question-box">
+
+
+                        <textarea
+                            id="questionBox"
+                            placeholder="Ask something about your PDF..."
+                            rows="1"
+                        ></textarea>
+
+
+                        <button
+                            type="button"
+                            id="askBtn"
+                            aria-label="Ask NUSHX"
+                        >
+
+                            <i class="fa-solid fa-arrow-up"></i>
+
+                        </button>
+
+
+                    </div>
+
+
+                    <div class="privacy-note">
+
+                        Answers are generated from retrieved
+                        document context.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RIGHT CARD — PIPELINE
+            ================================================== -->
+
+            <div class="card pipeline-card">
+
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            ARCHITECTURE
+                        </div>
+
+                        <h2>
+                            RAG Pipeline
+                        </h2>
+
+                    </div>
+
+
+                    <div class="card-icon">
+
+                        <i class="fa-solid fa-diagram-project"></i>
+
+                    </div>
+
+                </div>
+
+
+
+                <p class="pipeline-intro">
+
+                    NUSHX retrieves relevant information from
+                    your document before sending grounded
+                    context to the Groq language model.
+
+                </p>
+
+
+
+                <!-- =============================================
+                     PIPELINE
+                ============================================== -->
+
+                <div class="pipeline">
+
+
+                    <!-- STEP 1 -->
+
+                    <div
+                        class="pipeline-step"
+                        data-step="1"
+                    >
+
+                        <div class="step-number">
+                            01
+                        </div>
+
+                        <div class="step-line"></div>
+
+                        <div class="step-content">
+
+                            <strong>
+                                Upload PDF
+                            </strong>
+
+                            <span>
+                                Select your document
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 2 -->
+
+                    <div
+                        class="pipeline-step"
+                        data-step="2"
+                    >
+
+                        <div class="step-number">
+                            02
+                        </div>
+
+                        <div class="step-line"></div>
+
+                        <div class="step-content">
+
+                            <strong>
+                                Extract Text
+                            </strong>
+
+                            <span>
+                                Read text from PDF pages
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 3 -->
+
+                    <div
+                        class="pipeline-step"
+                        data-step="3"
+                    >
+
+                        <div class="step-number">
+                            03
+                        </div>
+
+                        <div class="step-line"></div>
+
+                        <div class="step-content">
+
+                            <strong>
+                                Create Chunks
+                            </strong>
+
+                            <span>
+                                Split document into smaller sections
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 4 -->
+
+                    <div
+                        class="pipeline-step"
+                        data-step="4"
+                    >
+
+                        <div class="step-number">
+                            04
+                        </div>
+
+                        <div class="step-line"></div>
+
+                        <div class="step-content">
+
+                            <strong>
+                                TF-IDF Vectorization
+                            </strong>
+
+                            <span>
+                                Convert text into numerical vectors
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 5 -->
+
+                    <div
+                        class="pipeline-step"
+                        data-step="5"
+                    >
+
+                        <div class="step-number">
+                            05
+                        </div>
+
+                        <div class="step-line"></div>
+
+                        <div class="step-content">
+
+                            <strong>
+                                Cosine Similarity
+                            </strong>
+
+                            <span>
+                                Compare question with document chunks
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 6 -->
+
+                    <div
+                        class="pipeline-step"
+                        data-step="6"
+                    >
+
+                        <div class="step-number">
+                            06
+                        </div>
+
+                        <div class="step-line"></div>
+
+                        <div class="step-content">
+
+                            <strong>
+                                Retrieve Top Chunks
+                            </strong>
+
+                            <span>
+                                Select the most relevant context
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 7 -->
+
+                    <div
+                        class="pipeline-step"
+                        data-step="7"
+                    >
+
+                        <div class="step-number">
+                            07
+                        </div>
+
+                        <div class="step-content">
+
+                            <strong>
+                                Groq AI Answer
+                            </strong>
+
+                            <span>
+                                Generate a grounded response
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     CONTEXT PANEL
+                ============================================== -->
+
+                <div class="context-panel">
+
+
+                    <div class="context-heading">
+
+                        <strong>
+                            Retrieved Context
+                        </strong>
+
+
+                        <span id="contextCount">
+                            0 chunks
+                        </span>
+
+                    </div>
+
+
+                    <p id="contextText">
+
+                        Relevant document context will
+                        appear here after asking a question.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             HOW IT WORKS
+        ================================================== -->
+
+        <section class="how-section">
+
+
+            <div class="section-heading">
+
+                <div class="eyebrow">
+                    SIMPLE BY DESIGN
+                </div>
+
+
+                <h2>
+
+                    From PDF to
+                    <span class="gradient-text">
+                        answer.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+
+            <div class="how-grid">
+
+
+                <!-- CARD 1 -->
+
+                <div class="how-card">
+
+                    <div class="how-number">
+                        01 / UPLOAD
+                    </div>
+
+
+                    <h3>
+                        Give NUSHX a document
+                    </h3>
+
+
+                    <p>
+
+                        Upload a readable PDF and NUSHX
+                        extracts its text for processing.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CARD 2 -->
+
+                <div class="how-card">
+
+                    <div class="how-number">
+                        02 / RETRIEVE
+                    </div>
+
+
+                    <h3>
+                        Find the relevant information
+                    </h3>
+
+
+                    <p>
+
+                        TF-IDF and cosine similarity identify
+                        the document sections most related
+                        to your question.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CARD 3 -->
+
+                <div class="how-card">
+
+                    <div class="how-number">
+                        03 / GENERATE
+                    </div>
+
+
+                    <h3>
+                        Get a grounded answer
+                    </h3>
+
+
+                    <p>
+
+                        The retrieved context is provided to
+                        Groq so the AI can generate a clear
+                        document-based response.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+
+        <div class="footer-brand">
+            NUSHX
+        </div>
+
+
+        <div>
+            AI PDF ASSISTANT
+        </div>
+
+
+        <div>
+            PDF → RETRIEVE → UNDERSTAND
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}"
+        defer
+    ></script>
+
+
+</body>
+
+</html>
