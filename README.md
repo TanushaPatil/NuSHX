@@ -1,5 +1,7 @@
 # NUSHX — AI PDF Assistant
 
+🔗 Live Demo:https://nushx.onrender.com/
+
 > Ask questions. Understand documents. Get answers.
 
 NUSHX is an AI-powered PDF assistant that allows users to upload a PDF and ask questions about its content.
